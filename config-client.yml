@@ -4,12 +4,12 @@ spring:
 
 ---
 server:
-  port: 8201
+  port: 8004
 #spring的配置
 spring:
   profiles: dev
   application:
-    name: springcloud-provider-dept
+    name: smartmem-dining-service-povider-8004
 
 #Eureka的配置，服务注册到哪里
 eureka:

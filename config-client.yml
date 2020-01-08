@@ -46,7 +46,7 @@ server:
 spring:
   profiles: dev
   application:
-    name: smartmem-dining-service-povider-8004 #这改一下
+    name: smartmem-haircut-service-povider-8005 #这改一下
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: org.postgresql.Driver
@@ -138,4 +138,4 @@ absoluteImgPath: D://work_project_res//smart-logistic-svr//img/
 sonImgPath: /img/
 ip: http://192.168.103:8001
 
-
+---

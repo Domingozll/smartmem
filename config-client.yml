@@ -1,3 +1,9 @@
+spring:
+  profiles:
+    active: dev
+
+
+---
 # 8004端口配置，就餐服务
 server:
   port: 8004
@@ -31,6 +37,7 @@ eureka:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka/
 
+
 ---
 # 8005端口配置，理发服务
 server:
@@ -39,11 +46,11 @@ server:
 spring:
   profiles: dev
   application:
-    name: smartmem-haircut-service-povider-8005
+    name: smartmem-dining-service-povider-8004 #这改一下
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/haircut_service
+    url: jdbc:postgresql://localhost:5432/haircut_service #这改一下
     username: postgres
     password: postgres
 
@@ -66,70 +73,69 @@ eureka:
       defaultZone: http://eureka7001.com:7001/eureka/
 
 
+---
+server:
+  port: 8001
+#  ssl:
+#    key-alias: tomcat
+#    key-store: classpath:server.keystore
+#    enabled: true
+#    key-store-password: 123456
+#    key-store-type: JKS
 
-#---
-#server:
-#  port: 8001
-##  ssl:
-##    key-alias: tomcat
-##    key-store: classpath:server.keystore
-##    enabled: true
-##    key-store-password: 123456
-##    key-store-type: JKS
-#
-#mybatis-plus:
-#  configuration:
-#    # 配置下划线转换为驼峰命名法
-#    map-underscore-to-camel-case: true
-#    # 日志打印查询sql
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-#    # 将数据库中为null的字段也取出
-#    call-setters-on-nulls: true
-#
-#  mapper-locations: classpath*:mapper/*/*Mapper.xml
-#  type-aliases-package: com.cisdi.smartmem.pojo
-#
-#
-##spring的配置
-#spring:
-#  profiles: dev
-#  application:
-#    name: springcloud-provider-visitor  #配置的服务名称
-#  datasource:
-#    type: com.alibaba.druid.pool.DruidDataSource
-#    driver-class-name: org.postgresql.Driver
-#    #    url: jdbc:mysql://localhost:3306/cisdi_smartmem?useUnicode=true&characterEncoding=utf-8
-#    url: jdbc:postgresql://localhost:5432/visitor_appointment
-#    username: postgres
-#    password: postgres
-#  thymeleaf:
-#    cache: false
-#    mode: LEGACYHTML5
-#  servlet:  # 配置相关的信息
-#    multipart:
-#      max-file-size: 20MB
-#      max-request-size: 20MB
-#      enabled: true
-#      resolve-lazily: false
-#
-##Eureka的配置，服务注册到哪里
-#eureka:
-#  client:
-#    service-url:
-#      defaultZone:  http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
-#  instance:
-#    instance-id: springcloud-provider-visitor8001 # 修改eureka上的默认描述信息！ 表示状态信息
-#    prefer-ip-address: true  # true,可以显示服务的IP地址
-#
-##info配置 .可以通过这里的设置，可以看出此服务的详细信息，例如：公司的名称，开发中的相关的信息
-#info:
-#  app.name: com.cisdi.smartmem
-#  company.name: cisdi.com
-#
-#
-## 配置文件的路径
-#absoluteImgPath: D://work_project_res//smart-logistic-svr//img/
-#sonImgPath: /img/
-#ip: http://192.168.103:8001
-#
-#
+mybatis-plus:
+  configuration:
+    # 配置下划线转换为驼峰命名法
+    map-underscore-to-camel-case: true
+    # 日志打印查询sql
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 将数据库中为null的字段也取出
+    call-setters-on-nulls: true
+
+  mapper-locations: classpath*:mapper/*/*Mapper.xml
+  type-aliases-package: com.cisdi.smartmem.pojo
+
+
+#spring的配置
+spring:
+  profiles: dev
+  application:
+    name: springcloud-provider-visitor  #配置的服务名称
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.postgresql.Driver
+    #    url: jdbc:mysql://localhost:3306/cisdi_smartmem?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:postgresql://localhost:5432/visitor_appointment
+    username: postgres
+    password: postgres
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+  servlet:  # 配置相关的信息
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+      enabled: true
+      resolve-lazily: false
+
+#Eureka的配置，服务注册到哪里
+eureka:
+  client:
+    service-url:
+      defaultZone:  http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: springcloud-provider-visitor8001 # 修改eureka上的默认描述信息！ 表示状态信息
+    prefer-ip-address: true  # true,可以显示服务的IP地址
+
+#info配置 .可以通过这里的设置，可以看出此服务的详细信息，例如：公司的名称，开发中的相关的信息
+info:
+  app.name: com.cisdi.smartmem
+  company.name: cisdi.com
+
+
+# 配置文件的路径
+absoluteImgPath: D://work_project_res//smart-logistic-svr//img/
+sonImgPath: /img/
+ip: http://192.168.103:8001
+
+

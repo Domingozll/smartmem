@@ -19,6 +19,7 @@ spring:
     username: postgres
     password: postgres
 
+# mybatis-plus配置
 mybatis-plus:
   configuration:
     # 配置下划线转换为驼峰命名法
@@ -31,12 +32,17 @@ mybatis-plus:
   mapper-locations: classpath*:mapper/*/*Mapper.xml
   type-aliases-package: com.cisdi.smartmem.pojo
 
-#Eureka的配置，服务注册到哪里
+
+# Eureka的配置，服务注册到哪里
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka7001.com:7001/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: smartmem-dining-service-povider-8004
 
+
+# hystrix配置
 feign:
   hystrix:
     enabled: true

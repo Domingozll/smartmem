@@ -11,11 +11,11 @@ server:
 spring:
   profiles: dev
   application:
-    name: smartmem-dining-service-povider-8004 #这改一下
+    name: smartmem-haircut-service-povider-8005
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/haircut_service #这改一下
+    url: jdbc:postgresql://localhost:5432/haircut_service
     username: postgres
     password: postgres
 
@@ -31,8 +31,25 @@ mybatis-plus:
   mapper-locations: classpath*:mapper/*/*Mapper.xml
   type-aliases-package: com.cisdi.smartmem.pojo
 
-#Eureka的配置，服务注册到哪里
+# Eureka的配置，服务注册到哪里
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka7001.com:7001/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: smartmem-haircut-service-povider-8005
+
+# hystrix配置
+feign:
+  hystrix:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true #是否开启超时(默认开启)
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000 #超时时间(默认1000毫秒)
